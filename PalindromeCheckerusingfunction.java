@@ -1,6 +1,6 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class PalindromeChecker{
+public class PalindromeCheckerusingfunction{
     
 public static boolean isPalindrome(int number) {
             int reversed = 0;
@@ -21,7 +21,7 @@ public static void main(String[] args)throws Exception{
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
 
-        if (isPalindrome(number)) {
+        if(isPalindrome(number)) {
             System.out.println(number + " is a palindrome.");
         } else {
             System.out.println(number + " is not a palindrome.");
