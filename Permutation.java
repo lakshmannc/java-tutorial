@@ -1,21 +1,44 @@
-public class Permutation {
-    public static void main(String[] args) {
-        String str = "abcdefghijklmnopqrstuvwxyz";
-        permute(str, "");
+import java.util.ArrayList;
+import java.util.List;
+
+public class permutation {
+    public static void main(String[] args) throws Exception {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        permutation(list, 0, list.size() - 1);
     }
 
-    public static void permute(String str, String ans) {
-        if (str.length() == 0) {
-            System.out.println(ans);
-            return;
+    /**
+     * Generates all permutations of the list.
+     *
+     * @param list the list of integers
+     * @param l    the starting index
+     * @param r    the ending index
+     */
+    private static void permutation(List<Integer> list, int l, int r) {
+        if (l == r)
+            System.out.println(list);
+        else {
+            for (int i = l; i <= r; i++) {
+                swap(list, l, i);
+                permutation(list, l + 1, r);
+                swap(list, l, i);
+            }
         }
-        
-        
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            String remaining = str.substring(0, i) + str.substring(i + 1);
+    }
 
-            permute(remaining, ans + ch);
-        }
+    /**
+     * Swaps two elements in the list.
+     *
+     * @param list the list of integers
+     * @param i    the index of the first element
+     * @param j    the index of the second element
+     */
+    public static void swap(List<Integer> list, int i, int j) {
+        int temp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, temp);
     }
 }
